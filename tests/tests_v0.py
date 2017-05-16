@@ -1,30 +1,38 @@
 import unittest
+from app.dojo import Dojo
+from app.room import Room
+from app.room import Office_space
+from app.room import Living_quaters
+from app.person import Person
+from app.person import Staff
+from app.person import Fellow
 
-class Testoffice_space(unittest.TestCase):
- class TestCheckClassInheritance(unittest.TestCase):
+
+class TestCheckClassInheritance(unittest.TestCase):
 
     def setUp(self):
         self.the_dojo = Dojo()
         
     # check if office is instance of room
     def test_office_is_instance_of_room(self):
-        self.office_space = Office()
-        self.assertIsInstance(self.office_space, Room)
+        self.Office_space = Office_space()
+        self.assertIsInstance(self.Office_space, Office_space)
 
     # check if living space is instance of room
-    def test_livingspace_is_instance_of_room(self):
-        self.living_space = LivingSpace()
-        self.assertIsInstance(self.living_space,Room)
+    def test_livingquaters_is_instance_of_room(self):
+        self.Living_quaters = Living_quaters()
+        self.assertIsInstance(self.Living_quaters,Living_quaters)
 
     # check if fellow is instance of person
     def test_fellow_is_instance_of_person(self):
         self.fellow = Fellow()
-        self.assertIsInstance(self.fellow,Person)
+        self.assertIsInstance(self.Fellow, Fellow)
 
     # check if staff is instance of person
     def test_staff_is_instance_of_person(self):
         self.staff = Staff()
-        self.assertIsInstance(self.staff, Person)
+        self.assertIsInstance(self.Staff, Staff)
+
 
 class TestCreateRoom(unittest.TestCase):
 
@@ -34,18 +42,18 @@ class TestCreateRoom(unittest.TestCase):
 
     # check if room is created
     def test_create_room_successfully(self):
-        kilimanjaro_office = self.the_dojo.create_room("blue", "office")
+        blue_office = self.the_dojo.create_room("blue", "office")
         self.assertTrue(self.blue_office)
         # Test if maximum capacity of the office is 6
     def test_create_room_max_capacity_of_office_is_six(self):
-        Simba_office = self.the_dojo.create_room('blue', 'office')
-        max_number = self.Simba_office.max_people
-        self.assertEqual(max_number, 6)
+        blue_office = self.the_dojo.create_room('blue', 'office')
+        space = self.Simba_office.space
+        self.assertEqual(space, 6)
     # Test if maximum capacity of the living space is 4
     def test_create_room_max_capacity_of_living_space_is_four(self):
-        Nzoia_livingspace = self.the_dojo.create_room('black', 'livingspace')
-        max_number = self.Nzoia_livingspace.max_people
-        self.assertEqual(max_number, 4)
+        black_livingspace = self.the_dojo.create_room('black', 'livingspace')
+        space = self.Nzoia_livingspace.space
+        self.assertEqual(space, 4)
     # Test if you can create mutiple rooms
     def test_create_room_check_multiple_rooms_created(self):
         multiple_offices = self.the_dojo.create_room('yellow','green','bage', 'office')
