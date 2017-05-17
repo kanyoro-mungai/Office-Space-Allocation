@@ -1,77 +1,63 @@
 import unittest
 from app.dojo import Dojo
-from app.room import Room
-from app.room import Office_space
-from app.room import Living_quaters
-from app.person import Person
-from app.person import Staff
-from app.person import Fellow
+from app.room import Room, Office_space, Living_quaters
+from app.person import Person, Staff, Fellow
+
 
 
 class TestCheckClassInheritance(unittest.TestCase):
-
-    def setUp(self):
-        self.the_dojo = Dojo()
-        
     # check if office is instance of room
     def test_office_is_instance_of_room(self):
-        self.Office_space = Office_space()
-        self.assertIsInstance(self.Office_space, Office_space)
+        blue_office = Room('blue', 'office', 6 )
+        self.assertIsInstance(blue_office, Room)
 
     # check if living space is instance of room
     def test_livingquaters_is_instance_of_room(self):
-        self.Living_quaters = Living_quaters()
-        self.assertIsInstance(self.Living_quaters,Living_quaters)
+        blue_living = Room('red', 'living Quaters', 4)
+        self.assertIsInstance(blue_living, Room)
 
     # check if fellow is instance of person
     def test_fellow_is_instance_of_person(self):
-        self.fellow = Fellow()
-        self.assertIsInstance(self.Fellow, Fellow)
+        new_fellow = Fellow('George', 'fellow')
+        self.assertIsInstance(new_fellow, Fellow)
 
     # check if staff is instance of person
     def test_staff_is_instance_of_person(self):
-        self.staff = Staff()
-        self.assertIsInstance(self.Staff, Staff)
+        new_staff = Staff('George', 'Staff')
+        self.assertIsInstance(new_staff, Person)
 
 
 class TestCreateRoom(unittest.TestCase):
 
-    def setUp(self):
-        self.the_dojo = Dojo()
-        self.create_room = create_room()
-
     # check if room is created
     def test_create_room_successfully(self):
-        blue_office = self.the_dojo.create_room("blue", "office")
-        self.assertTrue(self.blue_office)
+        instance_dojo = Dojo()
+        blue_office = instance_dojo.create_room('blue', 'office')
+        self.assertEqual(blue_office, 'New office_space is called blue')
         # Test if maximum capacity of the office is 6
     def test_create_room_max_capacity_of_office_is_six(self):
-        blue_office = self.the_dojo.create_room('blue', 'office')
-        space = self.Simba_office.space
+        blue_office = self.newdojo.create_room('blue', 'office')
+        space = self.blue_office.space
         self.assertEqual(space, 6)
     # Test if maximum capacity of the living space is 4
     def test_create_room_max_capacity_of_living_space_is_four(self):
         black_livingspace = self.the_dojo.create_room('black', 'livingspace')
-        space = self.Nzoia_livingspace.space
+        space = self.black_livingspace.space
         self.assertEqual(space, 4)
-    # Test if you can create mutiple rooms
-    def test_create_room_check_multiple_rooms_created(self):
-        multiple_offices = self.the_dojo.create_room('yellow','green','bage', 'office')
-        self.assertTrue(self.multiple_offices)
-    # Test if room already exists
+    Test if room already exists
 
 
 class TestAddPerson(unittest.TestCase):
-    def setUp(self):
-        self.the_dojo = Dojo()
-        self.add_person = add_person()        
     # check if person is added
     def test_person_add(self):
-        new_person = self.the_dojo.add_person('Andrew', 'staff')
-        self.assertTrue(self.new_person)
+        instance_dojo = Dojo()
+        new_person = instance_dojo.add_person('Andrew', 'Staff')
+        self.assertEqual(new_person, 'New Staff named Andrew created successfuly')
+
     # check if person_name is a string
     def test_string(self):
-        new_person = self.the_dojo.add_person('Simon', 'fellow')
+        instance_dojo = Dojo()
+        new_person = instance_dojo.add_person('Simon', 'fellow')
         self.assertIsInstance(new_person, str)
     # check if room is allocated
     def test_room(self):
