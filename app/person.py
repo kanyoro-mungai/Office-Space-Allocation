@@ -6,7 +6,7 @@ class Person(object):
 
 class Fellow(Person):
 	"""docstring for Fellow"""
-	def __init__(self, name, p_type = "fellow"):
+	def __init__(self, name, p_type = "fellow", accomodation = "No"):
 		super(Fellow, self).__init__(name, p_type = "fellow")
 	
 					
