@@ -30,13 +30,13 @@ class Dojo(object):
                 self.list_of_living_space[room_name] = []
                 print('\n')
                 print('______________Living Space Created __________')
-                print('New Living_space is called {}'.format(room_name))
+                print('New Living_space is called {}'.format(room_name.upper()))
 
             else:
                 print('Invalid Room Type Use either office or Living as type')
 
         else:
-            print("sorry... room {} already exists").format(room_name)
+            print("sorry... room {} already exists").format(room_name.upper())
 
     def allocate_office_space(self, name):
         try:
@@ -46,11 +46,14 @@ class Dojo(object):
                 print('\n')
                 print('______________Office Space Allocation__________')
                 print('{} has been assigned to {} office space'.format(
-                    name, random_room))
+                    name.upper(), random_room.upper()))
             else:
                 self.allocate_office_space(name)
         except:
             self.unallocated.append(name)
+            print('______________Unallocation __________')
+            print('No office space available {} has been put in a waiting list'.format(
+                name.upper()))
 
     def allocate_living_space(self, name):
         try:
@@ -60,11 +63,13 @@ class Dojo(object):
                 print('\n')
                 print('______________Living Space Allocation__________')
                 print('{} has been assigned to {} living space'.format(
-                    name, random_room))
+                    name.upper(), random_room.upper()))
             else:
                 self.allocate_living_space(name)
         except:
             self.unallocated.append(name)
+            print('______________Unallocation __________')
+            print('No living space available {} has been put in a waiting list'.format(name.upper()))
 
     def add_person(self, name, p_type, accomodation='N'):
         p_type = p_type.lower()
@@ -76,7 +81,7 @@ class Dojo(object):
             self.list_of_staff.append(name)
             print('\n')
             print('______________STAFF__________')
-            print('New Staff named {} created successfuly'.format(name))
+            print('New Staff named {} created successfuly'.format(name.upper()))
             self.allocate_office_space(name)
 
             if (accomodation == 'y'):
@@ -90,7 +95,7 @@ class Dojo(object):
             self.list_of_fellows.append(name)
             print('\n')
             print('______________FELLOW__________')
-            print('New Fellow named {} created'.format(name))
+            print('New Fellow named {} created'.format(name.upper()))
             print('\n')
 
             self.allocate_office_space(name)
