@@ -21,7 +21,7 @@ requirements.txt
 ### Installing
 
 Install python in your system
-
+```
 $ sudo apt install python
 ```
 Clone the repo:
@@ -32,7 +32,7 @@ $ git clone https://github.com/kanyoro-mungai/Office-Space-Allocation
 SSH
 ```
 $ git clone git@github.com:kanyoro-mungai/Office-Space-Allocation
-
+```
 Change Directory into the project folder
 ```
 $ cd Office-Space-Allocation
