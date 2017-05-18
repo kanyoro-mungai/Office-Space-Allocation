@@ -1,16 +1,14 @@
-#!/usr/bin/env python
 """
 This app uses docopt with the built in cmd module to create rooms and people and then assign people to diffrent rooms.
 Usage:
-    Dojo  create_room <room_name> <room_type> 
-    Dojo  add_person <name> <p_type>
+    Dojo  create_room <room_type> <room_name>...
+    Dojo  add_person <name> <p_type> <accomodation>
     Dojo  (- i| --interactive)
     Dojo  (-h| --help)
 
 Options:
     -i, --interactive  Interactive Mode
     -h, --help  Show this screen and exit.
-    -v, --version
 """
 
 import sys
@@ -53,7 +51,7 @@ def docopt_cmd(func):
 
 
 class MyInteractive (cmd.Cmd):
-    intro = 'Welcome to Andela Dojo Room Creator|Allocator!' \
+    intro = 'Welcome to Andela Dojo Space Allocator' \
         + ' (type help for a list of commands.)'
     prompt = 'Dojo>>>'
     file = None
@@ -62,27 +60,32 @@ class MyInteractive (cmd.Cmd):
     @docopt_cmd
     def do_create_room(self, args):
         """
-        usage: create_room <room_name> <room_type> 
+        usage: create_room <room_type> <room_name>...
         """
         room_name = args['<room_name>']
         room_type = args['<room_type>']
-
-        new_dojo.create_room(room_name, room_type)
+        for room in room_name:
+            new_dojo.create_room(room_type, room)
 
     @docopt_cmd
     def do_add_person(self, arg):
         """
-        usage: add_person <name> <p_type>
+        usage: add_person <name> <p_type> [<accomodation>]
 
         """
-        name = arg['<name>']
-        p_type = arg['<p_type>']
-       
-        new_dojo.add_person(name, p_type)
+        if arg['<accomodation>'] and arg['<p_type>'] == "fellow":
+            name = arg['<name>']
+            p_type = arg['<p_type>']
+            new_dojo.add_person(name, p_type, accomodation = 'y')
+        else:
+            name = arg['<name>']
+            p_type = arg['<p_type>']
+            new_dojo.add_person(name, p_type)
+
+
 
     def do_quit(self, arg):
         """Quits out of Interactive Mode."""
-
         print('Good Bye!')
         exit()
 
