@@ -1,14 +1,25 @@
 """
-This app uses docopt with the built in cmd module to create rooms and people and then assign people to diffrent rooms.
+This app uses docopt with the built in cmd module to create rooms
+and people and then assign people to diffrent rooms.
 Usage:
     Dojo  create_room <room_type> <room_name>...
     Dojo  add_person <name> <p_type> <accomodation>
     Dojo  (- i| --interactive)
     Dojo  (-h| --help)
+    Dojo (-v | --version)
 
 Options:
-    -i, --interactive  Interactive Mode
-    -h, --help  Show this screen and exit.
+    -i, --interactive  :Interactive Mode
+    -h, --help         :Show this screen and exit.
+    -v, --version      :  print the version of the system
+    create_room        :create a room of a certain type
+    add_person         :add a person to the system
+    <room_type>        :office or living
+    <room_name>        :enter a desired room name
+    <name>             :the name of the person
+    <p_type>           :indicate whether the person is staff or fellow
+    [<accommodation>]  : y or Y if the person wants accommodation,
+     if not leave blank
 """
 
 import sys
@@ -24,6 +35,7 @@ def docopt_cmd(func):
     This decorator is used to simplify the try/except block and pass the result
     of the docopt parsing to the called action.
     """
+
     def fn(self, arg):
         try:
             opt = docopt(fn.__doc__, arg)
@@ -53,9 +65,9 @@ def docopt_cmd(func):
 class MyInteractive (cmd.Cmd):
     intro = 'Welcome to Andela Dojo Space Allocator' \
         + ' (type help for a list of commands.)'
-    prompt = 'Dojo>>>'
+    print('\n')
+    prompt = '(Dojo)'
     file = None
-
 
     @docopt_cmd
     def do_create_room(self, args):
@@ -76,18 +88,22 @@ class MyInteractive (cmd.Cmd):
         if arg['<accomodation>'] and arg['<p_type>'] == "fellow":
             name = arg['<name>']
             p_type = arg['<p_type>']
-            new_dojo.add_person(name, p_type, accomodation = 'y')
+            new_dojo.add_person(name, p_type, accomodation='y')
         else:
             name = arg['<name>']
             p_type = arg['<p_type>']
             new_dojo.add_person(name, p_type)
 
-
+    @docopt_cmd
+    def do_version(self, args):
+        """Usage: version"""
+        print("Version 1.0")
 
     def do_quit(self, arg):
         """Quits out of Interactive Mode."""
         print('Good Bye!')
         exit()
+
 
 opt = docopt(__doc__, sys.argv[1:])
 
