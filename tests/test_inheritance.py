@@ -8,12 +8,12 @@ from app.person import Person, Staff, Fellow
 class TestCheckClassInheritance(unittest.TestCase):
     # check if office is instance of room
     def test_office_is_instance_of_room(self):
-        blue_office = Room('blue', 'office', 6 )
+        blue_office = Room('blue', 'office')
         self.assertIsInstance(blue_office, Room)
 
     # check if living space is instance of room
     def test_livingquaters_is_instance_of_room(self):
-        blue_living = Room('red', 'living Quaters', 4)
+        blue_living = Room('red', 'living Quaters')
         self.assertIsInstance(blue_living, Room)
 
     # check if fellow is instance of person
