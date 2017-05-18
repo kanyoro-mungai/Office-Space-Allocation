@@ -27,5 +27,5 @@ class TestCheckClassInheritance(unittest.TestCase):
         self.assertIsInstance(new_staff, Person)
 
 
-    if __name__ == "__main__":
-     unittest.main()
+if __name__ == "__main__":
+    unittest.main()

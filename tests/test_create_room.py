@@ -19,5 +19,5 @@ class TestCreateRoom(unittest.TestCase):
         no_after_creation = len(instance_dojo.list_of_living_space)
         self.assertEqual(no_after_creation, no_on_start + 1)
 
-    if __name__ == "__main__":
-     unittest.main()
+if __name__ == "__main__":
+    unittest.main()

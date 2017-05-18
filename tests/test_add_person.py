@@ -20,5 +20,5 @@ class TestAddPerson(unittest.TestCase):
         number_after_add = len(instance_dojo.list_of_staff)
         self.assertEqual(number_after_add, number_at_start + 1)
 
-    if __name__ == "__main__":
-     unittest.main()
+if __name__ == "__main__":
+    unittest.main()
