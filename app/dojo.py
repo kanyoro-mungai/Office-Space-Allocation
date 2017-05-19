@@ -46,8 +46,7 @@ class Dojo(object):
                 self.list_of_offices[random_room].append(name)
                 print('\n')
                 print('______________Office Space Allocation__________')
-                print('{} has been assigned to {} office space'.format(
-                    name.upper(), random_room.upper()))
+                print('{} has been assigned to {} office space'.format(name.upper(), random_room.upper()))
             else:
                 self.allocate_office_space(name)
         except:
