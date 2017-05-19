@@ -1,12 +1,11 @@
 import unittest
-from app.dojo import Dojo
-from app.room import Room, Office_space, Living_quaters
+from app.room import Room
 from app.person import Person, Staff, Fellow
-
 
 
 class TestCheckClassInheritance(unittest.TestCase):
     # check if office is instance of room
+
     def test_office_is_instance_of_room(self):
         blue_office = Room('blue', 'office')
         self.assertIsInstance(blue_office, Room)
